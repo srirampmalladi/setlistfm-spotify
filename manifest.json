@@ -4,26 +4,26 @@
   "version": "1.0",
   "description": "Makes Spotify playlists from setlist.fm pages",
   "page_action": {
-    "default_icon": "favicon.png",
-    "default_popup": "popup.html"
+    "default_icon": "favicon.png"
   },
   "background": {
     "scripts": ["background.js"],
     "persistent": false
   },
+  "content_scripts": [
+    {
+      "matches": ["http://www.setlist.fm/*"],
+      "js": ["jquery-1.6.2.js"]
+    }
+  ],
   "permissions": [
     "http://ws.spotify.com/",
     "http://www.setlist.fm/",
-    "declarativeContent"
+    "declarativeContent",
+    "tabs"
   ],
   "icons" : {
     "48" : "favicon.png",
     "128" : "favicon.png"
-  },
-  "content_scripts": [
-  	{
-	  	"matches": ["http://www.setlist.fm/*"],
-	  	"js": ["jquery-1.6.2.js", "content.js"]
-  	}
-  ]
+  }
 }
