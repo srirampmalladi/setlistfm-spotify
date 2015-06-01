@@ -12,7 +12,7 @@ function finish() {
 }
 
 function find(seq, artist, title) {
-    console.log(seq + artist + title)
+    alert(seq + artist + title)
     $.ajax("http://ws.spotify.com/search/1/track.json", {
         data: {
             'q': title + ' AND ' + artist
