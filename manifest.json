@@ -1,15 +1,16 @@
 {
+  "manifest_version": 2,
   "name": "Setlistify",
   "version": "1.0",
-  "description": "Integrates setlist.fm with spotify",
+  "description": "Makes Spotify playlists from setlist.fm pages",
   "browser_action": {
-    "default_icon": "favicon.ico"
+    "default_icon": "favicon.png",
+	"default_popup": "popup.html"
   },
   "permissions": [
     "http://ws.spotify.com/",
     "http://www.setlist.fm/"
   ],
-  "background_page": "background.html",
   "content_scripts": [
   	{
 	  	"matches": ["http://www.setlist.fm/*"],
