@@ -2,7 +2,7 @@
   var artistLabel = $('span.label').filter(function () {
     return $(this).text() === 'Artist';
   });
-  var artistName = $(artistLabel.siblings()[0]).find('span').text()
+  var artistName = $(artistLabel.siblings()[0]).find('span').text();
   console.log('artist', artistName);
 
   // Loads uris for given list of track names and calls the callback with an array
@@ -49,5 +49,12 @@
   }
 
   var trackNames = $('.songLabel').map(function(i, el) { return $(el).text(); });
-  loadTrackUris(trackNames, makePlaylist);
+
+  chrome.runtime.onMessage.addListener(
+    function(request, sender, sendResponse) {
+      if (request == "makePlaylistNow") {
+        loadTrackUris(trackNames, makePlaylist);
+      }
+    });
 })();
+
