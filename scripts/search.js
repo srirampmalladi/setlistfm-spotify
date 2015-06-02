@@ -33,7 +33,9 @@
       completed++;
       console.log('Finished ' + completed + '/' + total);
       if (total === completed) {
-        callback(trackUris);
+        callback(trackUris.filter(function(trackUri) {
+          return trackUri !== undefined && trackUri.length != 0;
+        }));
       }
     }
 
