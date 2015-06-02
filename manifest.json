@@ -13,7 +13,7 @@
   "content_scripts": [
     {
       "matches": ["http://www.setlist.fm/*"],
-      "js": ["scripts/jquery-1.6.2.js", "scripts/content.js"]
+      "js": ["scripts/jquery-1.6.2.js", "scripts/common.js", "scripts/search.js", "scripts/content.js"]
     }
   ],
   "permissions": [
