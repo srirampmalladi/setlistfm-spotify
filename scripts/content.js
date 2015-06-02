@@ -6,26 +6,26 @@
   var trackNames = $('.songLabel').map(function(i, el) { return $(el).text(); });
 
   var trackUris = null;
-  var authToken = null;
+  var acessToken = null;
+  var userId = 'srirampmalladi';
 
   function uriCallback(uris) {
     trackUris = uris;
-    if (authToken != null) {
-      Globals.createPlaylist(authToken, trackUris);
+    if (acessToken != null) {
+      Globals.createPlaylist(acessToken, trackUris);
     }
   }
 
   function authCallback(token) {
-    authToken = token;
+    acessToken = token;
     if (trackUris != null) {
-      Globals.createPlaylist(authToken, trackUris);
+      Globals.createPlaylist(acessToken, trackUris, artistName + ' concert');
     }
   }
 
   function makePlaylist() {
-    //Globals.loadTrackUris(trackNames, artistName, uriCallback);
-    uriCallback("");
-    Globals.getAuthToken(authCallback);
+    Globals.loadTrackUris(trackNames, artistName, uriCallback);
+    Globals.getAccessToken(authCallback);
   }
 
   chrome.runtime.onMessage.addListener(

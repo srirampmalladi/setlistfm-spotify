@@ -8,8 +8,8 @@
     var completed = 0;
 
     function doSearch(index, trackName) {
-      var uri = "http://api.spotify.com/v1/search";
-      $.ajax(uri, {
+      var url = "http://api.spotify.com/v1/search";
+      $.ajax(url, {
         data: {
           'q': 'artist:"' + artistName + '"+' + 'track:"' + trackName + '"',
           'type': 'track'

@@ -13,9 +13,9 @@
   }
 
   // Calls the callback with an authtoken for the user
-  function getAuthToken(callback) {
-    var uri = 'https://accounts.spotify.com/authorize';
-    $.ajax(uri, {
+  function getAccessToken(callback) {
+    var url = 'https://accounts.spotify.com/authorize';
+    $.ajax(url, {
       data: {
         'client_id': '868f291804be438f93c51f60be977b40',
         'response_type': 'token',
@@ -34,5 +34,5 @@
     });
   }
 
-  Globals.getAuthToken = getAuthToken;
+  Globals.getAccessToken = getAccessToken;
 })();
