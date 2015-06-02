@@ -13,11 +13,17 @@
   "content_scripts": [
     {
       "matches": ["http://www.setlist.fm/*"],
-      "js": ["scripts/jquery-1.6.2.js", "scripts/common.js", "scripts/search.js", "scripts/content.js"]
+      "js": ["scripts/jquery-1.6.2.js",
+             "scripts/common.js",
+             "scripts/search.js",
+             "scripts/auth.js",
+             "scripts/create.js",
+             "scripts/content.js"]
     }
   ],
   "permissions": [
-    "http://ws.spotify.com/",
+    "http://*.spotify.com/",
+    "https://*.spotify.com/",
     "http://www.setlist.fm/",
     "declarativeContent",
     "tabs"
