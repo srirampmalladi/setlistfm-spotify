@@ -4,7 +4,7 @@ chrome.runtime.onInstalled.addListener(function() {
       {
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { urlContains: 'www.setlist.fm/setlist' },
+            pageUrl: { urlContains: 'www.setlist.fm/setlist' }
           })
         ],
         // And shows the extension's page action.
