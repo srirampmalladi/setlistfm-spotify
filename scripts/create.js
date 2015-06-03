@@ -18,6 +18,7 @@
           'Content-Type': 'application/json'
         },
         success: function (response) {
+          alert("Created Playlist! (Restart Spotify if you don't see it yet.)");
           console.log('add tracks response', response);
         },
         error: function (err) {
