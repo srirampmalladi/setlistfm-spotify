@@ -1,14 +1,13 @@
 {
   "manifest_version": 2,
   "name": "Setlistify",
-  "version": "3.0",
+  "version": "4.0",
   "description": "Makes Spotify playlists from setlist.fm pages",
   "page_action": {
     "default_icon": "images/favicon.png"
   },
   "background": {
     "scripts": ["scripts/background.js"]
-//    "persistent": false
   },
   "content_scripts": [
     {
