@@ -7,12 +7,12 @@
     "default_icon": "images/favicon.png"
   },
   "background": {
-    "scripts": ["scripts/background.js"],
-    "persistent": false
+    "scripts": ["scripts/background.js"]
+//    "persistent": false
   },
   "content_scripts": [
     {
-      "matches": ["http://www.setlist.fm/*"],
+      "matches": ["http://www.setlist.fm/*", "http://www.setlistify.com/*"],
       "js": ["scripts/jquery-2.1.4.min.js",
              "scripts/common.js",
              "scripts/search.js",
@@ -25,7 +25,11 @@
     "http://*.spotify.com/",
     "https://*.spotify.com/",
     "http://www.setlist.fm/",
+    "http://www.google.com/",
+    "http://www.setlistify.com/*",
     "declarativeContent",
+    "webRequest",
+    "webRequestBlocking",
     "tabs"
   ],
   "icons" : {

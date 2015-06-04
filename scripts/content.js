@@ -6,22 +6,29 @@
     return $(label.siblings()[0]).find('span').text();
   }
 
-  var artistName = getValue('Artist');
-  var venueName = getValue('Venue');
-  var trackNames = $('.songLabel').map(function(i, el) { return $(el).text(); });
+  var artistName;
+  var trackNames;
+  var playlistName;
 
-  var month = $('.dateBlock .m').text();
-  var day = $('.dateBlock .d').text();
-  var year = $('.dateBlock .y').text();
-  var dateStr = month + " " + day + ", " + year;
-  var date = new Date(month + " " + day + ", " + year);
-  var formattedDate = date.toISOString().split('T')[0];
+  function parsePage() {
+    artistName = getValue('Artist');
+    trackNames = $('.songLabel').map(function (i, el) {
+      return $(el).text();
+    });
 
-  var playlistName = artistName + " at " + venueName + ", " + formattedDate;
+    var venueName = getValue('Venue');
+    var month = $('.dateBlock .m').text();
+    var day = $('.dateBlock .d').text();
+    var year = $('.dateBlock .y').text();
+    var date = new Date(month + " " + day + ", " + year);
+    var formattedDate = date.toISOString().split('T')[0];
+
+    playlistName = artistName + " at " + venueName + ", " + formattedDate;
+  }
 
   var trackUris = null;
   var acessToken = null;
-  var userId = 'srirampmalladi';
+
 
   function uriCallback(uris) {
     trackUris = uris;
@@ -38,6 +45,8 @@
   }
 
   function makePlaylist() {
+    alert('Making playlist...');
+    parsePage();
     Globals.loadTrackUris(trackNames, artistName, uriCallback);
     Globals.getAccessToken(authCallback);
   }
@@ -48,5 +57,9 @@
         makePlaylist();
       }
     });
+
+  if (window.location.href.search('setlistify') !== -1) {
+    setTimeout(makePlaylist, 2000);
+  }
 })();
 

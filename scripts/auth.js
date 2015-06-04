@@ -12,22 +12,25 @@
     }
   }
 
-  var url = 'https://accounts.spotify.com/authorize' +
+  var redirectUri = "http://www.setlistify.com";
+  var authUrl = 'https://accounts.spotify.com/authorize' +
     '?client_id=868f291804be438f93c51f60be977b40' +
     '&response_type=token' +
-    '&redirect_uri=http://localhost' +
+    '&redirect_uri=' + redirectUri +
+    '&state=' + encodeURIComponent(window.location.href) +
     '&scope=playlist-modify-private';
 
+  console.log(authUrl);
   // Pops up a log in page and lets the user login
   // TODO: call the callback with the access token after the user logs in.
   // Right now the user has to go back to the original page and click the button again
   function popupLogin(callback) {
-    var newWindow = window.open(url);
+    window.location.href = authUrl;
   }
 
   // Calls the callback with the access token for the user
   function getAccessToken(callback) {
-    $.ajax(url, {
+    $.ajax(authUrl, {
       success: function(response, foo) {
         console.log('auth response', response, foo);
         var redirect = response.redirect;
