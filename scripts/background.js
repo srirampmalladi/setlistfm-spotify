@@ -10,6 +10,17 @@ chrome.runtime.onInstalled.addListener(function() {
         // And shows the extension's page action.
         actions: [ new chrome.declarativeContent.ShowPageAction() ]
       }
+    ]),
+    chrome.declarativeContent.onPageChanged.addRules([
+      {
+        conditions: [
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { urlContains: 'www.reddit.com' }
+          })
+        ],
+        // And shows the extension's page action.
+        actions: [ new chrome.declarativeContent.ShowPageAction() ]
+      }
     ])
   });
 });
@@ -44,7 +55,7 @@ chrome.pageAction.onClicked.addListener(function(tab) {
     if (redirectUrl === undefined) {
       return { 'cancel': true };
     } else {
-      var redirectUrl = decodeURIComponent(redirectUrl);
+      redirectUrl = decodeURIComponent(redirectUrl);
       if (redirectUrl.search('\\?') === -1) {
         redirectUrl += '?'
       } else {

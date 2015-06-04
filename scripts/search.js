@@ -1,14 +1,16 @@
 (function () {
-  // Given an array of track names and an artist name
+  // Given an array of trackData objects (containing trackName and artistName)
   // searches on the spotify api and gets the track uris
   // calls the callback with an array of uris
-  function loadTrackUris(trackNames, artistName, callback) {
-    var total = trackNames.length;
-    var trackUris = new Array(trackNames.length);
+  function loadTrackUris(trackDatas, callback) {
+    var total = trackDatas.length;
+    var trackUris = new Array(trackDatas.length);
     var completed = 0;
 
-    function doSearch(index, trackName) {
+    function doSearch(index, trackData) {
       var url = "http://api.spotify.com/v1/search";
+      var artistName = trackData['artistName'];
+      var trackName = trackData['trackName'];
       $.ajax(url, {
         data: {
           'q': 'artist:"' + artistName + '"+' + 'track:"' + trackName + '"',
@@ -39,7 +41,7 @@
       }
     }
 
-    trackNames.each(doSearch);
+    trackDatas.each(doSearch);
   }
 
   Globals.loadTrackUris = loadTrackUris;

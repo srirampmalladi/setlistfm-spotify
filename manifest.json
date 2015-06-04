@@ -11,9 +11,11 @@
   },
   "content_scripts": [
     {
-      "matches": ["http://www.setlist.fm/*", "http://www.setlistify.com/*"],
+      "matches": ["http://www.setlist.fm/*", "http://www.setlistify.com/*", "http://www.reddit.com/*"],
       "js": ["scripts/jquery-2.1.4.min.js",
              "scripts/common.js",
+             "scripts/parse_setlist.js",
+             "scripts/parse_reddit.js",
              "scripts/search.js",
              "scripts/auth.js",
              "scripts/create.js",
@@ -24,6 +26,7 @@
     "http://*.spotify.com/",
     "https://*.spotify.com/",
     "http://www.setlist.fm/",
+    "http://www.reddit.com/*",
     "http://www.google.com/",
     "http://www.setlistify.com/*",
     "declarativeContent",

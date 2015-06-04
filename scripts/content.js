@@ -1,37 +1,13 @@
 (function() {
-  function getValue(labelName) {
-    var label = $('span.label').filter(function () {
-      return $(this).text() === labelName;
-    });
-    return $(label.siblings()[0]).find('span').text();
-  }
-
-  var artistName;
-  var trackNames;
+  var trackDatas;
   var playlistName;
-
-  function parsePage() {
-    artistName = getValue('Artist');
-    trackNames = $('.songLabel').map(function (i, el) {
-      return $(el).text();
-    });
-
-    var venueName = getValue('Venue');
-    var month = $('.dateBlock .m').text();
-    var day = $('.dateBlock .d').text();
-    var year = $('.dateBlock .y').text();
-    var date = new Date(month + " " + day + ", " + year);
-    var formattedDate = date.toISOString().split('T')[0];
-
-    playlistName = artistName + " at " + venueName + ", " + formattedDate;
-  }
 
   var trackUris = null;
   var acessToken = null;
 
-
   function uriCallback(uris) {
     trackUris = uris;
+    console.log(uris);
     if (acessToken != null) {
       Globals.createPlaylist(acessToken, trackUris);
     }
@@ -46,8 +22,10 @@
 
   function makePlaylist() {
     alert('Making playlist...');
-    parsePage();
-    Globals.loadTrackUris(trackNames, artistName, uriCallback);
+    var parseData = Globals.parsePage();
+    trackDatas = parseData['trackDatas'];
+    playlistName = parseData['playlistName'];
+    Globals.loadTrackUris(trackDatas, uriCallback);
     Globals.getAccessToken(authCallback);
   }
 
