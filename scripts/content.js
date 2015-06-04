@@ -25,6 +25,8 @@
     var parseData = Globals.parsePage();
     trackDatas = parseData['trackDatas'];
     playlistName = parseData['playlistName'];
+    console.log('trackData', trackDatas);
+    console.log('playlistName', playlistName);
     Globals.loadTrackUris(trackDatas, uriCallback);
     Globals.getAccessToken(authCallback);
   }
