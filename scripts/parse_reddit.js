@@ -18,7 +18,7 @@
         return trackData['trackName'] !== undefined
       });
 
-      var dateStr = new Date().toISOString().replace('T.*', '');
+      var dateStr = new Date().toISOString().replace(/T.*/, '');
       var pageStr = window.location.href.replace(/.*\/r\//, 'r/');
       var playlistName = pageStr + ' - ' + dateStr;
       return {
